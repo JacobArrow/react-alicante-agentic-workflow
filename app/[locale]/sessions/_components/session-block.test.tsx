@@ -28,7 +28,18 @@ describe("SessionBlock", () => {
   it("shows the level as a badge", () => {
     render(<SessionBlock session={session} top={0} height={72} />);
 
-    expect(screen.getByText("Beginner")).toBeInTheDocument();
+    // The visually-hidden "Level: " prefix splits the badge's text across
+    // two elements, so an exact getByText string won't match — compare the
+    // badge span's full (including visually-hidden) text content instead.
+    // tagName narrows the match to the badge itself, not its wrapping Box
+    // (same textContent, since the badge is its only child).
+    expect(
+      screen.getByText(
+        (_, element) =>
+          element?.tagName === "SPAN" &&
+          element.textContent === "Level: Beginner",
+      ),
+    ).toBeInTheDocument();
   });
 
   it("links to the session page", () => {

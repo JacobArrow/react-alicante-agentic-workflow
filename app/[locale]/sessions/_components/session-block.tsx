@@ -3,7 +3,7 @@ import { SurfaceCard } from "@/components/atoms/surface-card";
 import { Link } from "@/i18n/navigation";
 import type { Session } from "@/types/session";
 import { formatSessionLevel } from "@/utils/session-level";
-import { Box, Flex, Text } from "@chakra-ui/react";
+import { Box, Flex, Text, VisuallyHidden } from "@chakra-ui/react";
 
 interface SessionBlockProps {
   session: Session;
@@ -33,6 +33,7 @@ export function SessionBlock({ session, top, height }: SessionBlockProps) {
             </Text>
             <Box flexShrink="0">
               <Badge variant="outline">
+                <VisuallyHidden>Level: </VisuallyHidden>
                 {formatSessionLevel(session.level)}
               </Badge>
             </Box>

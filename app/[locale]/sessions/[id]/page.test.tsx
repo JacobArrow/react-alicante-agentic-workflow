@@ -44,8 +44,19 @@ describe("SessionDetailPage", () => {
 
     await renderPage(session.id);
 
-    expect(screen.getByText("Agentic AI")).toBeInTheDocument();
-    expect(screen.getByText("Intermediate")).toBeInTheDocument();
+    // The visually-hidden "Track:"/"Level:" prefixes split each badge's text
+    // across two elements, so an exact getByText string won't match —
+    // compare the badge's full (including visually-hidden) text content.
+    expect(
+      screen.getByText(
+        (_, element) => element?.textContent === "Track: Agentic AI",
+      ),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        (_, element) => element?.textContent === "Level: Intermediate",
+      ),
+    ).toBeInTheDocument();
   });
 
   it("shows the session title, speaker and description", async () => {
