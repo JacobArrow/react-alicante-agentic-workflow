@@ -1,5 +1,27 @@
 # Changelog
 
+## [0.4.0] — 2026-09-24
+
+### Features
+
+- Show each session's level (#5)
+- Add a Speakers page (#4)
+
+### Maintenance
+
+- Trigger preview deployment
+
+## Test Suite
+
+| Suite          | Status     |
+| -------------- | ---------- |
+| ESLint         | ⏳ pending |
+| Type-check     | ⏳ pending |
+| Unit tests     | ⏳ pending |
+| Build (Vercel) | ⏳ pending |
+
+CI: pending — will run once the release branch is pushed
+
 ## [0.3.1] — 2026-09-24
 
 ### Bug Fixes
