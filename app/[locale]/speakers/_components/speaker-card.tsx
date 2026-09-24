@@ -18,7 +18,7 @@ export function SpeakerCard({ speaker }: SpeakerCardProps) {
       <CardHeader>
         {/* h2: PageHeading above renders the page's only h1, so each card's
             title is the next level down, not a sibling h3. */}
-        <CardTitle as="h2" fontSize="lg">
+        <CardTitle as="h2" fontSize="md">
           {speaker.name}
         </CardTitle>
       </CardHeader>
