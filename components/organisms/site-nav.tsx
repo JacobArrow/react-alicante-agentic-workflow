@@ -18,6 +18,7 @@ export function SiteNav() {
   const links: NavLink[] = [
     { href: "/sessions", label: t("schedule") },
     ...(isStatsEnabled ? [{ href: "/stats", label: t("stats") }] : []),
+    { href: "/speakers", label: t("speakers") },
     { href: "/news", label: t("news") },
   ];
 
