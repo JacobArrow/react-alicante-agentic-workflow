@@ -3,16 +3,24 @@ import { PageHeading } from "@/components/atoms/page-heading";
 import { fetchSessions } from "@/services/sessions";
 import { getSpeakers } from "@/utils/speakers";
 import { Flex, Grid } from "@chakra-ui/react";
-import { getTranslations } from "next-intl/server";
 
 export default async function SpeakersPage() {
-  const t = await getTranslations("SpeakersPage");
   const sessions = await fetchSessions();
   const speakers = getSpeakers(sessions);
 
   return (
     <Flex direction="column" gap="8" flex="1" width="full">
-      <PageHeading title={t("title")}>{t("description")}</PageHeading>
+      {/*
+        Hardcoded, not next-intl: `getTranslations` reads request-scoped data
+        that Cache Components refuses to prerender without `"use cache"` or
+        `<Suspense>` (broke the Vercel build — see PR #4). No other page.tsx
+        in this app uses `getTranslations` for the same reason; Stats and
+        Schedule hardcode their headings too. Matching that instead of
+        reintroducing the failure.
+      */}
+      <PageHeading title="Speakers">
+        Every speaker at React Alicante, with the sessions they&apos;re giving.
+      </PageHeading>
 
       <Grid
         gap="4"
